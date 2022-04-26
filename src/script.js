@@ -11,13 +11,36 @@ import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 // Debug
 const gui = new dat.GUI()
 
+
+// Canvas
+const canvas = document.querySelector('canvas.webgl')
+
+// Scene
+const scene = new THREE.Scene()
+
+/**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader()
+
+const matcapTexture = textureLoader.load('./textures/matcaps/1.png')
+
+
+/**
+ * Sizes
+ */
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
+
 /**
  * Fonts
  */
  const fontLoader = new FontLoader()
 
  fontLoader.load(
-    '/fonts/helvetiker_regular.typeface.json',
+    './fonts/helvetiker_regular.typeface.json',
     (font) =>
     {
         const textGeometry = new TextGeometry(
@@ -61,28 +84,6 @@ const gui = new dat.GUI()
 }
     }
 )
-
-// Canvas
-const canvas = document.querySelector('canvas.webgl')
-
-// Scene
-const scene = new THREE.Scene()
-
-/**
- * Textures
- */
-const textureLoader = new THREE.TextureLoader()
-
-const matcapTexture = textureLoader.load('/textures/matcaps/1.png')
-
-
-/**
- * Sizes
- */
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
 
 window.addEventListener('resize', () =>
 {
